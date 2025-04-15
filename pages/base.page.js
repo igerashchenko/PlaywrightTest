@@ -2,9 +2,12 @@ export class BasePage {
     constructor(page) {
       this.page = page;
     }
-  
-    async navigate(url) {
-      await this.page.goto(url);
+
+    async logNavigationDetails(url) {
+      console.log('--- NAVIGATION DEBUG ---');
+      console.log('Constructed URL:', url);
+      console.log('Environment BASE_URL:', process.env.BASE_URL);
+      console.log('Current page URL (before):', await this.page.url());
     }
   
     async click(locator) {

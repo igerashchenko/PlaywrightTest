@@ -23,7 +23,14 @@ class RegistrationPage extends BasePage {
   }
 
   async navigateToRegistration() {
-    await this.navigate(`https://${process.env.HTTP_CREDENTIALS_USERNAME}:${process.env.HTTP_CREDENTIALS_PASSWORD}@${process.env.BASE_URL}`);
+    const config = this.page.context()._options;
+    
+    // Debug logging (optional)
+    console.log('Base URL:', config.baseURL);
+    console.log('Using login:', config.httpCredentials?.username);
+    console.log('Using password:', config.httpCredentials?.password);
+    this.logNavigationDetails(config.baseURL);
+    await this.page.goto('/');
     await this.click(this.signUpButton);
   }
 
