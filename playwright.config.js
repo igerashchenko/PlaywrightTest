@@ -11,6 +11,7 @@ require('dotenv').config();
  */
 
 export default defineConfig({
+  testIgnore: 'example.spec.js',
   testDir: './tests',
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
